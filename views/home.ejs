@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRUD App</title>
+    <link rel="stylesheet" href="student.css" />
+  </head>
+  <body>
+    <h1>Students</h1>
+    <ul>
+      <% students.forEach(student => { %>
+      <li>
+        <%= student.name %> (age <%= student.age %>, class <%= student.class %>,
+        password<%= student.password%>)
+        <form
+          action="/app/edit/<%= student._id %>"
+          method="get"
+          style="display: inline"
+        >
+          <button>Edit</button>
+        </form>
+        <form
+          action="/app/delete/<%= student._id %>?_method=DELETE"
+          method="POST"
+          style="display: inline"
+        >
+          <button>Delete</button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+    <a href="/app/create">Create a new student</a>
+  </body>
+</html>
